@@ -18,13 +18,19 @@ The bot script scrapes realmstock.com 's event notifier for information on the c
 
 3. Create a .env file in the root directory and add the following variables.
 	
-	`privateToken={your bot's private token}
-	`eventChannelId={the Discord channel id of the channel the bot should post in}
+	
+	`privateToken={your bot's private token}`
+	`eventChannelId={the Discord channel id of the channel the bot should post in}`
+	
 	
 4. Build and run the Docker image from the Dockerfile in the repository.
 
-	`cd rotmg-notifier
-	sudo docker build --tag rotmg-notifier
-	sudo docker run rotmg-notifier`
+
+	`cd rotmg-notifier`
+	`sudo docker build --tag rotmg-notifier`
+	`sudo docker run rotmg-notifier`
+	
+	
+	
 	
 *Event notification services like RealmStock's are made possible through bots, which makes them likely a violation of DECA Games' TOS. I do not advocate you using this service and do not accept any responsibility for its use.*
