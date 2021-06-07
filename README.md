@@ -34,7 +34,7 @@ The bot script scrapes realmstock.com 's event notifier for information on the c
 
 The tests are written in Python's unittest library and can be discovered and ran by executing the following command from the root directory.
 
-	`python -m unittest` \
+	`python -m unittest` 
 	
 	
 	
