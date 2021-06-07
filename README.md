@@ -30,6 +30,11 @@ The bot script scrapes realmstock.com 's event notifier for information on the c
 	`sudo docker build --tag rotmg-notifier`\
 	`sudo docker run rotmg-notifier`
 	
+## Running Test
+
+The tests are written in Python's unittest library and can be discovered and ran by executing the following command from the root directory.
+
+	`python -m unittest` \
 	
 	
 	
