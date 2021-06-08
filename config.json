@@ -1,0 +1,33 @@
+{
+    "hermit-god" : true,
+    "grand-sphinx" : true,
+    "lord-of-the-lost-lands" : true,
+    "skull-shrine": true,
+    "pentaract" : true,
+    "cube-god" : true,
+    "lost-sentry" : true,
+    "aliens" : true,
+    "ghost-ship" : true,
+    "temple-statues" : true,
+    "rock-dragon" : true,
+    "dwarf-miner" : true,
+    "killer-bee-nest" : true,
+    "avatar" : true,
+    "ghost-king" : true,
+    "keyper" : true,
+    "keyper-tower" : true,
+    "the-gardener" : true,
+    "leprechaun" : true,
+    "mysterious" : true,
+    "crystal" : true,
+    
+    "red-demon" : true,
+    "cyclops-god" : true,
+    "ent-ancient" : true,
+    "lich-king" : true,
+    
+    "realm-closed" : false,
+    "beach-bum"  : false,
+    "staff-member"  : true,
+    "key-pop"  : false
+}

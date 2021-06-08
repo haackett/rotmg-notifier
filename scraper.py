@@ -1,10 +1,11 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.common import exceptions
 import requests
 from models import rotmg_server
 import os
-
+from util import openconfig
 
 class Scraper():
    
@@ -12,7 +13,9 @@ class Scraper():
         self.URL = 'https://realmstock.com/pages/event-notifier'
         self.chrome_options = self.__set_chrome_options()
         self.driver = self.__setup_driver()
+        self.driver.implicitly_wait(5) #seconds
         self.driver.get(self.URL)
+        self.__set_site_options()
 
     def __setup_driver(self):
         try:
@@ -21,6 +24,16 @@ class Scraper():
             return driver
         except TypeError:
             raise TypeError("Env variable CHROMEDRIVER is not defined")
+
+    def __set_site_options(self) -> None:
+        """Configures options on the site's input elements according to the config.json"""
+        config_dict = openconfig.open_config()
+        for key in openconfig.DEFAULT_TRUE_KEYS:
+            if not config_dict[key]:
+                self.driver.find_element_by_id(key).click()
+        for key in openconfig.DEFAULT_FALSE_KEYS:
+            if config_dict[key]:
+                self.driver.find_element_by_id(key).click()
     
     def __set_chrome_options(self) -> Options:
         """Sets chrome options for Selenium. Chrome options for headless browser is enabled.
@@ -57,14 +70,19 @@ class Scraper():
 
     def get_servers(self):
         print('Scraping server data ...')
+        
         parent_div = self.driver.find_element_by_id('history')
         event_divs = parent_div.find_elements_by_css_selector(
             '.realmstock-panel.event')
         servers = []
         for event_div in event_divs:
-            content_div = event_div.find_element_by_css_selector(
-                '.event-content')
-            servers.append(self.__get_content(content_div))
+            try:
+                content_div = event_div.find_element_by_css_selector(
+                    '.event-content')
+                servers.append(self.__get_content(content_div))
+            except exceptions.StaleElementReferenceException as e:
+                print(e)
+                pass
         print('Returning servers ...')
         return servers
 
